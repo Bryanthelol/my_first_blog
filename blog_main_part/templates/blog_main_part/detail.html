@@ -1,4 +1,4 @@
-{% extends "blog_main_part/base.html" %} {% load bootstrap3 %} {% block content %} {% for post in post_list %}
+{% extends "blog_main_part/base.html" %} {% load bootstrap3 %} {% block content %}
 <section class="panel panel-default">
     <header class="panel-heading">
         <h2>
@@ -17,8 +17,8 @@
         <p>
             {{ post.content }}
         </p>
-        <a class="primary_button" href="/{{ post.id }}/">Read More >>></a>
+
     </div>
 </section>
 <!-- panel -->
-{% empty %} 这里还空空如也。 {% endfor %} {% endblock content %}
+{% endblock content %}
