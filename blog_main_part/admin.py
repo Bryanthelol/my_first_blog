@@ -1,3 +1,5 @@
+# Register your models here.
+from blog_main_part.models import Article
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(Article)
