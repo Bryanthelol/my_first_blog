@@ -1,1 +1,23 @@
+{% extends "blog_main_part/base.html" %} {% load bootstrap3 %} {% block content %} {% for post in post_list %}
+<section class="panel panel-default">
+    <header class="panel-heading">
+        <h2>
+                {{ post.title }}
+        </h2>
 
+        <small>
+          Time: <span>{{ post.date_added }}</span>
+                <span>{{ post.category }}</span>
+
+        </small>
+
+    </header>
+
+    <div class="panel-body">
+        <p>
+            {{ post.content }}
+        </p>
+    </div>
+</section>
+<!-- panel -->
+{% empty %} 这里还空空如也。 {% endfor %} {% endblock content %}

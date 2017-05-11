@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     # 定义应用blog_main_part的基础URL，以此覆盖localhost8000
-    url(r'', include('myblog.urls', namespace='myblog')),
+    url(r'', include('blog_main_part.urls', namespace='blog_main_part')),
 ]

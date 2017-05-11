@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 第三方应用
+    'bootstrap3',
+
     # 我的应用
     'blog_main_part',
 ]
@@ -121,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django-bootstrap3的设置
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}
