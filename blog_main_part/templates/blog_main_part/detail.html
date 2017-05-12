@@ -6,8 +6,16 @@
         </h2>
 
         <small>
-          发布时间：<span>{{ post.date_added }}</span><br>
+          作者：<span>{{ post.author }}</span>
+          <br>
+          发布时间：<span>{{ post.created_time }}</span>
+          最新修改时间：<span>{{ post.modified_time }}</span>
+          <br>
           类别: <span>{{ post.category }}</span>
+          {% if post.tags %}
+          标签：<span>{{ post.tags }}</span>
+          {% else %}
+          <span>{{ post.tags }}</span>
 
         </small>
 
@@ -15,7 +23,7 @@
 
     <div class="panel-body">
         <p>
-            {{ post.content }}
+            {{ post.body }}
         </p>
 
     </div>

@@ -1,5 +1,8 @@
 # Register your models here.
-from blog_main_part.models import Article
 from django.contrib import admin
 
-admin.site.register(Article)
+from .models import Category, Post, Tag
+
+admin.site.register(Post)
+admin.site.register(Tag)
+admin.site.register(Category)
