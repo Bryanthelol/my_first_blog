@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.cache import cache_page
 
 from .models import Post
@@ -13,5 +13,5 @@ def home(request):
 
 def detail(request, my_args):
     """文章详情页，及其数据处理逻辑"""
-    post = Post.objects.get(id=int(my_args))
+    post = get_object_or_404(Post, my_args=my_args)
     return render(request, 'blog_main_part/detail.html', {'post': post})

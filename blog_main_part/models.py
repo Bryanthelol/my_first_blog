@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -50,3 +51,7 @@ class Post(models.Model):
     def __str__(self):
         """返回模型生成的数据"""
         return self.title
+
+    def get_absolute_url(self):
+        """这个方法方便生成对应url"""
+        return reverse('blog_main_part:detail', kwargs={'my_args': self.my_args})

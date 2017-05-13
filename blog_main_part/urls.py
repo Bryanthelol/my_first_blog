@@ -4,6 +4,7 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'blog_main_part'
 urlpatterns = [
     # 主页
     url(r'^$', views.home, name='home'),
