@@ -6,10 +6,18 @@ class Category(models.Model):
     """对文章进行分类的数据模型"""
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        """返回模型生成的数据"""
+        return self.name
+
 
 class Tag(models.Model):
     """给文章打上标签的数据模型"""
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        """返回模型生成的数据"""
+        return self.name
 
 
 class Post(models.Model):

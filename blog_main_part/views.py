@@ -9,7 +9,7 @@ from .models import Category, Post, Tag
 def home(request):
     """主页，及其数据处理逻辑"""
     post_list = Post.objects.all()  # 获取Post数据模型的全部数据
-    return render(request, 'blog_main_part/home.html', {'post_list': post_list})
+    return render(request, 'blog_main_part/index.html', {'post_list': post_list})
 
 
 @cache_page(60 * 15)
