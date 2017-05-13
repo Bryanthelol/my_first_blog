@@ -45,13 +45,10 @@ class Post(models.Model):
         ordering = ['-created_time']
         ordering = ['-modified_time']
 
-        # 多篇文字显示复数
-        verbose_name_plural = "posts"
-
     def __str__(self):
         """返回模型生成的数据"""
         return self.title
 
     def get_absolute_url(self):
-        """这个方法方便生成对应url"""
-        return reverse('blog_main_part:detail', kwargs={'my_args': self.my_args})
+        """给视图函数detail返回id属性，方便生成对应url"""
+        return reverse('blog_main_part:detail', kwargs={'my_args': self.id})
