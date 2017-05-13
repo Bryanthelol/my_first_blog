@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
 
     # 文章详情页
-    url(r'^(?P<my_args>\d+)/$', views.detail, name='detail')
+    url(r'^post/(?P<my_args>\d+)/$', views.detail, name='detail'),
 ]
