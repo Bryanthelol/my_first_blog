@@ -24,8 +24,8 @@ class Post(models.Model):
     """一篇文章的数据模型"""
     title = models.CharField(max_length=80)
     body = models.TextField()
-    created_time = models.DateTimeField()
-    modified_time = models.DateTimeField()
+    created_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now_add=True)
 
     # blank属性意为是否允许为空值
     excerpt = models.CharField(max_length=200, blank=True)
