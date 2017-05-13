@@ -99,38 +99,35 @@
                             <ul>
                                 {% for post in recent_post_list %}
                                     <li>
-                                        <a href="{{ post.get_absolute_url }}">{{ post.titile }}</a>
+                                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
                         </div>
                         <div class="widget widget-archives">
-                            <h3 class="widget-title">Archives</h3>
+                            <h3 class="widget-title">归档时间</h3>
+                            {% archives as date_list %}
                             <ul>
-                                <li>
-                                    <a href="#">November 2014</a>
-                                </li>
-                                <li>
-                                    <a href="#">September 2014</a>
-                                </li>
-                                <li>
-                                    <a href="#">January 2013</a>
-                                </li>
+                                {% for date in date_list %}
+                                    <li>
+                                        <a href="#">{{ date.year }}
+                                            年
+                                            {{ date.month }}
+                                            月</a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
 
                         <div class="widget widget-category">
-                            <h3 class="widget-title">Category</h3>
+                            <h3 class="widget-title">文章分类</h3>
+                            {% get_categories as category_list %}
                             <ul>
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">Web Development</a>
-                                </li>
-                                <li>
-                                    <a href="#">SEO</a>
-                                </li>
+                                {% for category in category_list %}
+                                    <li>
+                                        <a href="#">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </aside>

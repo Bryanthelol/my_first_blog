@@ -1,6 +1,6 @@
 from django import template
 
-from .models import Category, Post
+from ..models import Category, Post
 
 # 实例化一个模板库，给python函数提供装饰器，使之能使用模板标签语法
 register = template.Library()
