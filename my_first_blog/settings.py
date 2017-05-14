@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     # 第三方应用
     'bootstrap3',
 
-    # 我的应用
+    # 我的应用：博客主体
     'blog_main_part',
+
+    # 我的应用：评论
+    'comments',
+
 ]
 
 MIDDLEWARE = [
