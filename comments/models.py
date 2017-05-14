@@ -17,7 +17,7 @@ class Comments(models.Model):
     text = models.TextField()
 
     # 创建时间
-    create_time = models.DateTimeField(auto_now_add=True)
+    created_time = models.DateTimeField(auto_now_add=True)
 
     # 这条评论关联到唯一那篇文章
     post = models.ForeignKey('blog_main_part.Post')
