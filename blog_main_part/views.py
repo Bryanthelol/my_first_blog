@@ -2,7 +2,7 @@ import markdown
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.cache import cache_page
 
-from .models import Post
+from .models import Category, Post
 
 
 # @cache_page(60 * 15) 对单个视图函数使用缓存（暂不使用）
@@ -22,3 +22,19 @@ def detail(request, my_args):
                                       'markdown.extensions.toc',
                                   ])
     return render(request, 'blog_main_part/detail.html', {'post': post})
+
+
+def archives(request, year, month):
+    """归档时间详情页"""
+
+    # created_time.year，这个实例调用属性，但由于这里做参数，故改为两个下划线 __
+    post_list = Post.objects.filter(
+        created_time__year=year, created_time__month=month)
+    return render(request, 'blog_main_part/index.html', {'post_list': post_list})
+
+
+def category(request, my_args):
+    """文章分类的详情页"""
+    cate = get_object_or_404(Category, id=int(my_args))
+    post_list = Post.objects.filter(category=cate)
+    return render(request, 'blog_main_part/index.html', {'post_list': post_list})

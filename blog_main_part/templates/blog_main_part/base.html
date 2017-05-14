@@ -110,7 +110,7 @@
                             <ul>
                                 {% for date in date_list %}
                                     <li>
-                                        <a href="#">{{ date.year }}
+                                        <a href="{% url 'blog_main_part:archives' date.year date.month %}">{{ date.year }}
                                             年
                                             {{ date.month }}
                                             月</a>
@@ -125,7 +125,7 @@
                             <ul>
                                 {% for category in category_list %}
                                     <li>
-                                        <a href="#">{{ category.name }}</a>
+                                        <a href="{% url 'blog_main_part:category' category.id %}">{{ category.name }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
