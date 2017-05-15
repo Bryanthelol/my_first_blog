@@ -18,7 +18,7 @@ class CommentsForms(forms.ModelForm):
                 'placeholder': "你的昵称",
             }),
             'email': forms.TextInput(attrs={
-                'placeholder': "邮箱"，
+                'placeholder': "邮箱",
             }),
             'url': forms.TextInput(attrs={
                 'placeholder': "个人网址",

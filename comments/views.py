@@ -35,7 +35,7 @@ def post_comment(request, post_args):
         else:
             # 数据不合法，重新渲染详情页，再渲染表单的错误
             # 因为是关联的，post.comment_set.all()获取post下全部评论
-            comment_list = post.comment_set.all()
-            return render(request, 'blog_main_part/detail.html', {'post'： post,
+            comment_list = post.comments_set.all()
+            return render(request, 'blog_main_part/detail.html', {'post': post,
                                                                   'form': form,
                                                                   'comment_list': comment_list})

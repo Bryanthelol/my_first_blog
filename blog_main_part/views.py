@@ -24,8 +24,8 @@ def detail(request, my_args):
                                   ])
     form = CommentsForms()
     # 获取这篇post下的全部评论
-    comment_list = post.comment_set.all()
-    return render(request, 'blog_main_part/detail.html', {'post': post
+    comment_list = post.comments_set.all()
+    return render(request, 'blog_main_part/detail.html', {'post': post,
                                                           'form': form,
                                                           'comment_list': comment_list})
 
