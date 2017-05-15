@@ -1,4 +1,5 @@
 import markdown
+from comments.forms import CommentsForms
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.cache import cache_page
 
@@ -21,7 +22,12 @@ def detail(request, my_args):
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
                                   ])
-    return render(request, 'blog_main_part/detail.html', {'post': post})
+    form = CommentsForms()
+    # 获取这篇post下的全部评论
+    comment_list = post.comment_set.all()
+    return render(request, 'blog_main_part/detail.html', {'post': post
+                                                          'form': form,
+                                                          'comment_list': comment_list})
 
 
 def archives(request, year, month):

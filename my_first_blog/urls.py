@@ -20,6 +20,9 @@ urlpatterns = [
     # 定义管理员页面的基础URL
     url(r'^admin/', include(admin.site.urls)),
 
-    # 定义应用blog_main_part的基础URL，以此覆盖localhost8000
+    # 定义应用blog_main_part的基础URL
     url(r'', include('blog_main_part.urls', namespace='blog_main_part')),
+
+    # 定义应用comments的URL
+    url(r'', include('comments.urls', namespace='comments')),
 ]
