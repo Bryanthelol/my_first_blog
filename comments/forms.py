@@ -1,13 +1,13 @@
 from django import forms
 
-from .models import Comments
+from .models import Comment
 
 
 class CommentsForms(forms.ModelForm):
 
     class Meta:
         # 指定这个表单对应Comments模型
-        model = Comments
+        model = Comment
 
         # 指定要显示的字段
         fields = ['name', 'email', 'url', 'text']

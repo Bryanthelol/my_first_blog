@@ -1,14 +1,14 @@
+import markdown
 from blog_main_part.models import Post
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CommentsForms
-from .models import Comments
 
 
 def post_comment(request, post_args):
 
     # 获取与评论相关联的那篇文章
-    post = get_object_or_404(Post, id=int(post_args))
+    post = get_object_or_404(Post, id=post_args)
 
     # 当用户提交表单（POST）时，才处理表单数据
     if request.method != 'POST':
@@ -17,7 +17,7 @@ def post_comment(request, post_args):
 
     else:
         # 把数据传入表单模型，并实例化
-        form = CommentsForms(request.POST)
+        form = CommentsForms(data=request.POST)
 
         # 检查表单是否符合格式要求
         if form.is_valid():
@@ -35,7 +35,13 @@ def post_comment(request, post_args):
         else:
             # 数据不合法，重新渲染详情页，再渲染表单的错误
             # 因为是关联的，post.comment_set.all()获取post下全部评论
-            comment_list = post.comments_set.all()
+            comment_list = post.comments.all()
+            post.body = markdown.markdown(post.body,
+                                          extensions=[
+                                              'markdown.extensions.extra',
+                                              'markdown.extensions.codehilite',
+                                              'markdown.extensions.toc',
+                                          ])
             return render(request, 'blog_main_part/detail.html', {'post': post,
                                                                   'form': form,
                                                                   'comment_list': comment_list})

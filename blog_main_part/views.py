@@ -15,7 +15,7 @@ def index(request):
 
 def detail(request, my_args):
     """文章详情页，及其数据处理逻辑"""
-    post = get_object_or_404(Post, id=int(my_args))
+    post = get_object_or_404(Post, id=my_args)
     post.body = markdown.markdown(post.body,
                                   extensions=[
                                       'markdown.extensions.extra',
@@ -24,7 +24,7 @@ def detail(request, my_args):
                                   ])
     form = CommentsForms()
     # 获取这篇post下的全部评论
-    comment_list = post.comments_set.all()
+    comment_list = post.comments.all()
     return render(request, 'blog_main_part/detail.html', {'post': post,
                                                           'form': form,
                                                           'comment_list': comment_list})
@@ -41,6 +41,6 @@ def archives(request, year, month):
 
 def category(request, my_args):
     """文章分类的详情页"""
-    cate = get_object_or_404(Category, id=int(my_args))
+    cate = get_object_or_404(Category, id=my_args)
     post_list = Post.objects.filter(category=cate)
     return render(request, 'blog_main_part/index.html', {'post_list': post_list})

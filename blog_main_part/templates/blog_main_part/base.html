@@ -11,7 +11,7 @@
 
         {% load staticfiles %}
         <!-- css -->
-        <link rel="stylesheet" href="reset_firstly.css">
+        <link rel="stylesheet" href="{% static 'blog_main_part/css/reset_firstly.css' %}">
         <link rel="stylesheet" href="{% static 'blog_main_part/css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="{% static 'blog_main_part/css/pace.css' %}">
@@ -50,15 +50,6 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="cl-effect-11">
                                         <a href="{% url 'blog_main_part:index' %}" data-hover="Home">Home</a>
-                                    </li>
-                                    <li class="cl-effect-11">
-                                        <a href="full-width.html" data-hover="Blog">Blog</a>
-                                    </li>
-                                    <li class="cl-effect-11">
-                                        <a href="about.html" data-hover="About">About</a>
-                                    </li>
-                                    <li class="cl-effect-11">
-                                        <a href="contact.html" data-hover="Contact">Contact</a>
                                     </li>
                                 </ul>
                             </div>
