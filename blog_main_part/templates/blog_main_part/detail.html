@@ -25,7 +25,7 @@
 				</span>
 
 				<span class="comments-link">
-					<a href="#">4 Comments</a>
+					<a href="{% url 'blog_main_part:detail' post.id %}">comment</a>
 				</span>
 			</div>
 		</header>
@@ -54,7 +54,7 @@
 					{{ form.url }}
 					{{ form.url.errors }}
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-12">
 					<label for="{{ form.text.id_for_label }}">Comment:</label>
 					{{ form.text }}
 					{{ form.text.errors }}
@@ -63,32 +63,38 @@
 					</button>
 				</div>
 			</div>
-			<!-- row -- >
-	  </form>
-  </section>
+		</form>
+	</section>
 
 	<section class="comment-list">
+		<div class="comment_list" id="comments">
+			<h2>评论列表</h2>
+			<ul class="list-unstyled">
+				{% for comment in comment_list %}
+					<li class="comment-item">
+						<span class="name">{{ comment.name }}</span>
+					</li>
+					<li class="comment-item">
+						<time class="date">{{ comment.created_time }}</time>
+					</li>
+					<li class="comment-item">
+						<div class="text">
+							{{ comment.text }}
+						</div>
+					</li>
 
-		<h2>评论列表</h2>
-		<ul class="list-unstyled">
-			{% for comment in comment_list %}
-				<li class="comment-item">
-					<span class="name">{{ comment.name }}</span>
-				</li>
-				<li class="comment-item">
-					<time class="date">{{ comment.created_time }}</time>
-				</li>
-				<li class="comment-item">
-					<div class="text">
-						{{ comment.text }}
-					</div>
-				</li>
-
-			{% empty %}
+					{% empty %}
 					暂无评论
-			{% endfor %}
-		</ul>
-  </section>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
 
+	<aside class="col-md-4">
+		<div class="widget widget-recent-posts">
+			<h3 class="widget-title">文章目录</h3>
+			{{ toc|safe }}
+		</div>
+	</aside>
 
 {% endblock main %}

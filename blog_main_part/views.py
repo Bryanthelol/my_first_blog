@@ -1,7 +1,9 @@
 import markdown
 from comments.forms import CommentsForms
 from django.shortcuts import get_object_or_404, render
+from django.utils.text import slugify
 from django.views.decorators.cache import cache_page
+from markdown.extensions.toc import TocExtension
 
 from .models import Category, Post
 
@@ -17,18 +19,18 @@ def detail(request, my_args):
     """文章详情页，及其数据处理逻辑"""
     post = get_object_or_404(Post, id=my_args)
     post.increase_views()
-    post.body = markdown.markdown(post.body,
-                                  extensions=[
-                                      'markdown.extensions.extra',
-                                      'markdown.extensions.codehilite',
-                                      'markdown.extensions.toc',
-                                  ])
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        TocExtension(slugify=slugify)])  # slugify参数处理中文锚值显示问题
+    post.body = md.convert(post.body)  # 用convert方法将markdown文本渲染成html
     form = CommentsForms()
     # 获取这篇post下的全部评论
     comment_list = post.comments.all()
     context = {'post': post,
                'form': form,
-               'comment_list': comment_list}
+               'comment_list': comment_list,
+               'toc': md.toc}  # 一旦调用convert方法后，md就会多出一个toc属性
 
     return render(request, 'blog_main_part/detail.html', context=context)
 
