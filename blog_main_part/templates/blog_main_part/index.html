@@ -9,8 +9,13 @@
                     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                 </h1>
                 <div class="entry-meta">
+
+                    <span class="post-views">
+                        <a href="#">阅读量：{{ post.views }}</a>
+                    </span>
+
                     <span class="post-category">
-                        <a href="#">{{ post.category.name }}</a>
+                        <a href="#">分类：{{ post.category.name }}</a>
                     </span>
 
                     <span class="post-date">

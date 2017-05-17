@@ -5,8 +5,13 @@
 		<header class="entry-header">
 			<h1 class="entry-title">{{ post.title }}</h1>
 			<div class="entry-meta">
+
+				<span class="post-views">
+					<a href="#">阅读量：{{ post.views }}</a>
+				</span>
+
 				<span class="post-category">
-					<a href="#">{{ post.category.name }}</a>
+					<a href="#">分类：{{ post.category.name }}</a>
 				</span>
 
 				<span class="post-date">
@@ -59,10 +64,11 @@
 				</div>
 			</div>
 			<!-- row -- >
-	</form>
+	  </form>
+  </section>
 
+	<section class="comment-list">
 
-	<div class="comment-list">
 		<h2>评论列表</h2>
 		<ul class="list-unstyled">
 			{% for comment in comment_list %}
@@ -82,7 +88,7 @@
 					暂无评论
 			{% endfor %}
 		</ul>
-  </div>
-</section>
+  </section>
+
 
 {% endblock main %}

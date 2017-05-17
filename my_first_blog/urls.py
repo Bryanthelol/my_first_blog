@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'', include('blog_main_part.urls', namespace='blog_main_part')),
 
     # 定义应用comments的URL
-    url(r'', include('comments.urls', namespace='comments')),
+    url(r'', include('comments.urls')),
 ]

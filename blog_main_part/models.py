@@ -40,6 +40,9 @@ class Post(models.Model):
     # 让一篇文章与它的唯一作者关联（一对多）
     author = models.ForeignKey(User)
 
+    # 记录阅读量
+    views = models.PositiveIntegerField(default=0)
+
     class Meta:
         """把博客文章降序排列(改变上面的属性date_added)"""
         ordering = ['-created_time']
@@ -52,3 +55,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         """给视图函数detail返回id属性，方便生成对应url"""
         return reverse('blog_main_part:detail', kwargs={'my_args': self.id})
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
